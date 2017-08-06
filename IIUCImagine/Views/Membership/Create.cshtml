@@ -1,0 +1,98 @@
+﻿@using System.Web.Mvc.Html
+@using System.Web.UI.WebControls
+@using IIUCImagine.Models
+@model IIUCImagine.Models.MembershipRegi
+
+@{
+    ViewBag.Title = "Request";
+}
+@section myCSS{
+  
+<link href="~/Content/myStyle.css" rel="stylesheet" />
+}
+<div class="col-md-offset-1 col-md-11">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <br />
+            <h4>Membership Registration Form</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control textbox", placeholder = "Full Name" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContactNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control textbox", placeholder = "Contact No" } })
+                    @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control textbox", PlaceHolder = "Ex-C141094" } })
+                    @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control textbox", PlaceHolder = "Email Address" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DepartmentID, "Department", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(a => a.DepartmentID, new SelectList(ViewBag.DepartmentID, "Value", "Text"), "--Select Your Department--", new { @class = "form-control textbox" })
+                    @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DoYouKnowID, "Programing", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(a => a.DoYouKnowID, new SelectList(ViewBag.DoYouKnowID, "Value", "Text"), "Do you know about C#/VB/F# Programing Language?", new { @class = "form-control textbox" })
+
+                    @Html.ValidationMessageFor(model => model.DoYouKnowID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ParticipateID, "Participate", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(a => a.ParticipateID, new SelectList(ViewBag.ParticipateID, "Value", "Text"), "Did you have participate before Microsoft Imagine Cup?", new { @class = "form-control textbox" })
+                    @Html.ValidationMessageFor(model => model.ParticipateID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+               
+            </div>
+        </div>
+    }
+
+    <br/>
+    <br/>
+ 
+</div>
+
+    @section scripts
+{
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    }
+

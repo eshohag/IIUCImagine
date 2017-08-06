@@ -1,0 +1,29 @@
+﻿/*#header {
+    background-color: #5C2E91 !important;
+    color: aliceblue !important;
+}
+div ul li a:hover,
+div ul li a:focus {
+    color: #532983;
+    text-decoration: underline;
+}*/
+
+.textbox {
+    border: 1px solid #772953;
+    /*padding: 20px;*/
+    resize: both;
+    overflow: auto;
+    /*margin: auto;*/
+    min-width: 70%;
+    height: 40px;
+}
+.btn-primary,
+.btn-primary.active {
+    color: #ffffff;
+    background-color: #772953;
+    border-color: #285e8e;
+    width: 120px;
+}
+.btn-primary:hover {
+    background-color: #3E152B;
+}
