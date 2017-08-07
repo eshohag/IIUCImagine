@@ -39,10 +39,10 @@ namespace IIUCImagine.Models
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaim").Property(p => p.Id).HasColumnName("UserClaimId");
             modelBuilder.Entity<IdentityRole>().ToTable("Role").Property(a => a.Id).HasColumnName("RoleId");
         }
-        public System.Data.Entity.DbSet<IIUCImagine.Models.MembershipRegi> MembershipRegistration { get; set; }
+        public System.Data.Entity.DbSet<IIUCImagine.Models.Membership> Memberships { get; set; }
         public System.Data.Entity.DbSet<IIUCImagine.Models.Department> Departments { get; set; }
         public System.Data.Entity.DbSet<IIUCImagine.Models.DoYouKnow> DoYouKnows { get; set; }
-        public System.Data.Entity.DbSet<IIUCImagine.Models.Participate> Participate { get; set; }
+        public System.Data.Entity.DbSet<IIUCImagine.Models.Participate> Participates { get; set; }
 
 
     }

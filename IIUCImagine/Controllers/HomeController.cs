@@ -1,4 +1,5 @@
 ﻿using IIUCImagine.Models;
+using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -19,7 +20,7 @@ namespace IIUCImagine.Controllers
         {
             ViewBag.DepartmentID = new SelectList(db.Departments, "ID", "Tittle");
             ViewBag.DoYouKnowID = new SelectList(db.DoYouKnows, "ID", "Tittle");
-            ViewBag.ParticipateID = new SelectList(db.Participate, "ID", "Tittle");
+            ViewBag.ParticipateID = new SelectList(db.Participates, "ID", "Tittle");
             return View();
         }
 
@@ -28,19 +29,22 @@ namespace IIUCImagine.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Index([Bind(Include = "ID,Name,ContactNo,StudentID,Email,DepartmentID,DoYouKnowID,ParticipateID")] MembershipRegi membershipRegi)
+        public async Task<ActionResult> Index(Membership membership)
         {
+
             if (ModelState.IsValid)
             {
-                db.MembershipRegistration.Add(membershipRegi);
+                membership.SubmitDate = DateTime.Today;
+                //membership.SubmitDate = DateTime.Now.Date;
+                db.Memberships.Add(membership);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Success");
             }
 
-            ViewBag.DepartmentID = new SelectList(db.Departments, "ID", "Tittle", membershipRegi.DepartmentID);
-            ViewBag.DoYouKnowID = new SelectList(db.DoYouKnows, "ID", "Tittle", membershipRegi.DoYouKnowID);
-            ViewBag.ParticipateID = new SelectList(db.Participate, "ID", "Tittle", membershipRegi.ParticipateID);
-            return View(membershipRegi);
+            ViewBag.DepartmentID = new SelectList(db.Departments, "ID", "Tittle", membership.DepartmentID);
+            ViewBag.DoYouKnowID = new SelectList(db.DoYouKnows, "ID", "Tittle", membership.DoYouKnowID);
+            ViewBag.ParticipateID = new SelectList(db.Participates, "ID", "Tittle", membership.ParticipateID);
+            return View(membership);
         }
 
         public ActionResult Support()

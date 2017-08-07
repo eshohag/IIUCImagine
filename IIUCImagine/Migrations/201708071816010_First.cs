@@ -26,7 +26,7 @@ namespace IIUCImagine.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.MembershipRegis",
+                "dbo.Memberships",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -36,12 +36,24 @@ namespace IIUCImagine.Migrations
                         Email = c.String(nullable: false),
                         DepartmentID = c.Int(nullable: false),
                         DoYouKnowID = c.Int(nullable: false),
+                        ParticipateID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Departments", t => t.DepartmentID, cascadeDelete: true)
                 .ForeignKey("dbo.DoYouKnows", t => t.DoYouKnowID, cascadeDelete: true)
+                .ForeignKey("dbo.Participates", t => t.ParticipateID, cascadeDelete: true)
                 .Index(t => t.DepartmentID)
-                .Index(t => t.DoYouKnowID);
+                .Index(t => t.DoYouKnowID)
+                .Index(t => t.ParticipateID);
+            
+            CreateTable(
+                "dbo.Participates",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Tittle = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.Role",
@@ -119,22 +131,25 @@ namespace IIUCImagine.Migrations
             DropForeignKey("dbo.UserLogin", "UserId", "dbo.User");
             DropForeignKey("dbo.UserClaim", "UserId", "dbo.User");
             DropForeignKey("dbo.UserRole", "RoleId", "dbo.Role");
-            DropForeignKey("dbo.MembershipRegis", "DoYouKnowID", "dbo.DoYouKnows");
-            DropForeignKey("dbo.MembershipRegis", "DepartmentID", "dbo.Departments");
+            DropForeignKey("dbo.Memberships", "ParticipateID", "dbo.Participates");
+            DropForeignKey("dbo.Memberships", "DoYouKnowID", "dbo.DoYouKnows");
+            DropForeignKey("dbo.Memberships", "DepartmentID", "dbo.Departments");
             DropIndex("dbo.UserLogin", new[] { "UserId" });
             DropIndex("dbo.UserClaim", new[] { "UserId" });
             DropIndex("dbo.User", "UserNameIndex");
             DropIndex("dbo.UserRole", new[] { "RoleId" });
             DropIndex("dbo.UserRole", new[] { "UserId" });
             DropIndex("dbo.Role", "RoleNameIndex");
-            DropIndex("dbo.MembershipRegis", new[] { "DoYouKnowID" });
-            DropIndex("dbo.MembershipRegis", new[] { "DepartmentID" });
+            DropIndex("dbo.Memberships", new[] { "ParticipateID" });
+            DropIndex("dbo.Memberships", new[] { "DoYouKnowID" });
+            DropIndex("dbo.Memberships", new[] { "DepartmentID" });
             DropTable("dbo.UserLogin");
             DropTable("dbo.UserClaim");
             DropTable("dbo.User");
             DropTable("dbo.UserRole");
             DropTable("dbo.Role");
-            DropTable("dbo.MembershipRegis");
+            DropTable("dbo.Participates");
+            DropTable("dbo.Memberships");
             DropTable("dbo.DoYouKnows");
             DropTable("dbo.Departments");
         }

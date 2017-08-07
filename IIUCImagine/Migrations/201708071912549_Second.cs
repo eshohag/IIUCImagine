@@ -7,10 +7,12 @@ namespace IIUCImagine.Migrations
     {
         public override void Up()
         {
+            AddColumn("dbo.Memberships", "DateTime", c => c.DateTime(nullable: false));
         }
         
         public override void Down()
         {
+            DropColumn("dbo.Memberships", "DateTime");
         }
     }
 }

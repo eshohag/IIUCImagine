@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace IIUCImagine.Models
 {
-    public class MembershipRegi
+    public class Membership
     {
         public int ID { get; set; }
         [Required]
@@ -28,5 +29,6 @@ namespace IIUCImagine.Models
         [Required]
         public int ParticipateID { get; set; }
         public virtual Participate Participate { get; set; }
+        public DateTime SubmitDate { get; set; }
     }
 }

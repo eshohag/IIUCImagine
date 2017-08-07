@@ -7,13 +7,13 @@ namespace IIUCImagine.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class First : IMigrationMetadata
+    public sealed partial class SubmitDate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(First));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SubmitDate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201708061940150_First"; }
+            get { return "201708071923304_SubmitDate"; }
         }
         
         string IMigrationMetadata.Source
