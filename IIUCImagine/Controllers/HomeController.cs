@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace IIUCImagine.Controllers
 {
-    public class MembershipController : Controller
+    public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -15,7 +15,7 @@ namespace IIUCImagine.Controllers
         }
 
         // GET: Membership/Create
-        public ActionResult Create()
+        public ActionResult Index()
         {
             ViewBag.DepartmentID = new SelectList(db.Departments, "ID", "Tittle");
             ViewBag.DoYouKnowID = new SelectList(db.DoYouKnows, "ID", "Tittle");
@@ -28,7 +28,7 @@ namespace IIUCImagine.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Name,ContactNo,StudentID,Email,DepartmentID,DoYouKnowID,ParticipateID")] MembershipRegi membershipRegi)
+        public async Task<ActionResult> Index([Bind(Include = "ID,Name,ContactNo,StudentID,Email,DepartmentID,DoYouKnowID,ParticipateID")] MembershipRegi membershipRegi)
         {
             if (ModelState.IsValid)
             {

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="IIUCImagine, Microsoft Imagine Access, IIUC" />
     <META name="Description" 
-          content="Microsoft’s annual Imagine Cup, a global competition of high-tech student projects,
+          content="Microsoft Imagine - IIUC is the project of Microsoft Imagine Cup. If you are a member of our University Imagine - IIUC then You can download all developing software with free of cost under this project.
+          Microsoft’s annual Imagine Cup, a global competition of high-tech student projects,
           reached its culmination this week accompanied by the usual pomp at the company’s headquarters in Redmond.
           The winner of the $100,000 grand prize">
     <link href="~/favicon.ico" rel="shortcuticon" type="image/x-icon" />
@@ -24,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Microsoft Imagine - IIUC", "Create", "Membership", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Microsoft Imagine - IIUC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -35,7 +36,7 @@
 
                     <li><a href="https://goo.gl/hqyUzL" target="_blank">Downloads Catalog</a> </li>
                     <li><a href="https://imagine.microsoft.com/en-us/Institutions/Benefits" target="_blank">Program Benifits</a> </li>
-                    <li>@Html.ActionLink("Support", "Support", "Membership")</li>
+                    <li>@Html.ActionLink("Support", "Support", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
